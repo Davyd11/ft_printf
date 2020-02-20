@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/20 13:35:43 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:12:55 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_flags
 	int			len;
 	int			i;
 	int			flag_width;					// Length of spaces or ceros
-	int			width;						// LENGTH OF THE VARIABLE TO COMPARE
+	int			var_width;						// LENGTH OF THE VARIABLE TO COMPARE
 	int			flag_precision;				// DEPENDS OF THE NUMERS INDICATES WHAT IS THE CASE EXACTLY
 	int			precision;
 }				t_flags;
@@ -30,7 +30,7 @@ typedef struct	s_flags
 int			ft_printf(char *format, ...);
 
 void 		int_format(t_flags *f);
-
+void		spaces(t_flags *f);
 
 //void 		str_format(t_flags *f);
 //void		single_char(t_flags *f);

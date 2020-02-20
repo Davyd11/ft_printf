@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/20 13:35:22 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:25:50 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	flags_to_zero(t_flags *f)
 {
 	f->flag_width = 0;
-	f->width = 0;
+	f->var_width = 0;
 	f->flag_precision = 0;
 	f->precision = 0;
 }
