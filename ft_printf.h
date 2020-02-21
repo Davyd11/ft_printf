@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/20 14:12:55 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:07:13 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,20 @@ typedef struct	s_flags
 	int			flag_width;					// Length of spaces or ceros
 	int			var_width;						// LENGTH OF THE VARIABLE TO COMPARE
 	int			flag_precision;				// DEPENDS OF THE NUMERS INDICATES WHAT IS THE CASE EXACTLY
-	int			precision;
+	int			precision;					// USE TO KNOW WHAT KIND OF FLAG ARE WE WORKING WITH
+	int			done;						//IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
 }				t_flags;
 
 int			ft_printf(char *format, ...);
 
 void 		int_format(t_flags *f);
-void		spaces(t_flags *f);
+void		spaces(t_flags *f, int n);
 
 //void 		str_format(t_flags *f);
 //void		single_char(t_flags *f);
 
 void		flag_num(const char *format, t_flags *f);
-//void		flag_sig(const char *format, t_flags *f);
+void		flag_sig(const char *format, t_flags *f);
+
+void		not_show_sig(const char *format, t_flags *f);
+void		not_show_num(const char *format, t_flags *f);

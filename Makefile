@@ -6,7 +6,7 @@
 #    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/02/20 13:35:53 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/02/21 16:42:30 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJLIB_PATH = ./objs
 SRC_NAME =	ft_printf.c \
 			ft_print_int.c \
 			flag_short.c \
-			#ft_print_char.c \
+			not_show.c \
 			
 
 
