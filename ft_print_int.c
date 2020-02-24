@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:51:35 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:45:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void 	spaces(t_flags *f, int n)
 		}
 	}
 }
-
 int		ceros(t_flags *f, int n)
 {
 	int signo;
@@ -58,7 +57,6 @@ int		ceros(t_flags *f, int n)
 	}
 	return(signo);
 }
-
 void 	int_format(t_flags *f)
 {
 	int n;
@@ -66,9 +64,6 @@ void 	int_format(t_flags *f)
 	n = va_arg(f->ap, int);
 	f->var_width = ft_nbrlen(n);
 	f->len += ft_nbrlen(n);														// ADD THE LENGTH OF THE NUMBER IN THE FINAL RETURN LEN OF PRINTF
-	printf("%d", f->flag_width);
-	printf("%d", f->var_width);
-	printf("%d", f->precision);
 	spaces(f, n);
 	if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
 		n = n * (-1);															// SO THE SIGNE ISN'T DUPLICATED

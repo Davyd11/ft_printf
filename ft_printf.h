@@ -6,12 +6,11 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 12:44:05 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/24 17:43:35 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>//////////////////////////////////
-
+#include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include "libft/libft.h"
@@ -22,7 +21,7 @@ typedef struct	s_flags
 	int			len;
 	int			i;
 	int			flag_width;					// Length of spaces or ceros
-	int			var_width;						// LENGTH OF THE VARIABLE TO COMPARE
+	int			var_width;					// LENGTH OF THE VARIABLE TO COMPARE
 	int			flag_precision;				// DEPENDS OF THE NUMERS INDICATES WHAT IS THE CASE EXACTLY
 	int			precision;					// USE TO KNOW WHAT KIND OF FLAG ARE WE WORKING WITH
 	int			done;						//IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
@@ -32,6 +31,8 @@ int			ft_printf(char *format, ...);
 
 void 		int_format(t_flags *f);
 void		spaces(t_flags *f, int n);
+int			ceros(t_flags *f, int n);
+void	 	ft_print_int(int n, t_flags *f);
 
 void 		str_format(t_flags *f);
 void		single_char(t_flags *f);
@@ -42,3 +43,5 @@ void		flag_sig(const char *format, t_flags *f);
 
 void		not_show_sig(const char *format, t_flags *f);
 void		not_show_num(const char *format, t_flags *f);
+
+void		uns_int(t_flags *f);
