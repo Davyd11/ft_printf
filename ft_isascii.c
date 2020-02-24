@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 10:45:43 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/19 11:20:00 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
-void not_show_sig(const char *format, t_flags *f)
+int	ft_isascii(int c)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	if ((c >= 0) && (c <= 127))
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		return (1);
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	else
+		return (0);
 }

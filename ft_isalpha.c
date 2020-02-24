@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 10:45:06 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/12 10:45:17 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
-void not_show_sig(const char *format, t_flags *f)
+int	ft_isalpha(int c)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	if ((c < 123) && (c > 96))
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		return (1);
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
+	else if ((c < 91) && (c > 64))
 	{
-		f->i++;
+		return (2);
+	}
+	else
+	{
+		return (0);
 	}
 }

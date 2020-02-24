@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 11:05:15 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/12/12 15:17:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	unsigned int	count;
+	unsigned int	i;
+
+	count = 0;
+	i = 0;
+	if (!(dest))
+		return (size);
+	while (src[count] != '\0')
+		count++;
+	if (size > 0)
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		while (src[i] != '\0' && i < (size - 1))
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	return (count);
 }

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2020/02/19 17:25:56 by dpuente-          #+#    #+#             */
+/*   Updated: 2020/02/19 17:26:42 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+int     ft_nbrlen(int n)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
-	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
-	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+    int     i;
+    i = 1;
+    if (n < 0)
+    {
+        n = -n;
+        i++;
+    }
+    if (n == 0)
+        return (1);
+    while (n >= 10)
+    {
+        n /= 10;
+        i++;
+    }
+    return (i);
 }

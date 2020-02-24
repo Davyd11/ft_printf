@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 10:48:31 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/19 12:49:04 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
-void not_show_sig(const char *format, t_flags *f)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	char			*ptr;
+	char			c2;
+	int				i;
+
+	i = 0;
+	ptr = (char*)s;
+	c2 = (char)c;
+	while (n--)
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		if (ptr[i] == c2)
+			return (ptr + i);
+		i++;
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	return (NULL);
 }

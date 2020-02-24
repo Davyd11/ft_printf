@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/21 14:07:13 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:44:05 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int			ft_printf(char *format, ...);
 void 		int_format(t_flags *f);
 void		spaces(t_flags *f, int n);
 
-//void 		str_format(t_flags *f);
-//void		single_char(t_flags *f);
+void 		str_format(t_flags *f);
+void		single_char(t_flags *f);
+void 		spaces_char(t_flags *f);
 
 void		flag_num(const char *format, t_flags *f);
 void		flag_sig(const char *format, t_flags *f);

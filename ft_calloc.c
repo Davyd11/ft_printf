@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 10:41:11 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/26 16:44:15 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
-	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
-	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	void	*result;
+	size_t	i;
+
+	i = 0;
+	result = malloc(size * nmemb);
+	if (result == NULL)
+		return (result);
+	ft_bzero(result, size * nmemb);
+	return (result);
 }

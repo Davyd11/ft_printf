@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/13 15:23:19 by davyd11           #+#    #+#             */
+/*   Updated: 2019/12/12 15:31:26 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+t_list	*ft_lstnew(void const *content)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
-	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
-	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	t_list	*elemento;
+
+	if (!(elemento = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	if (content == NULL)
+		elemento->content = NULL;
+	else
+		elemento->content = (void *)content;
+	elemento->next = NULL;
+	return (elemento);
 }

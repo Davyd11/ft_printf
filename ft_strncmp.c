@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 11:06:24 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/11/21 11:57:17 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	size_t				i;
+	const unsigned char *s1_c;
+	const unsigned char *s2_c;
+
+	i = 0;
+	s1_c = (unsigned char *)s1;
+	s2_c = (unsigned char *)s2;
+	while (s1_c[i] != '\0' && s2_c[i] != '\0' && i < n)
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		if (s1_c[i] != s2_c[i])
+			return (s1_c[i] - s2_c[i]);
+		i++;
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
-	{
-		f->i++;
-	}
+	if (s1_c[i] != s2_c[i] && i != n)
+		return (s1_c[i] - s2_c[i]);
+	return (0);
 }

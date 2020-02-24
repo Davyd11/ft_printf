@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_show.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Created: 2019/11/12 11:04:58 by dpuente-          #+#    #+#             */
+/*   Updated: 2019/12/12 15:16:35 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
+#include "libft.h"
 
-void not_show_sig(const char *format, t_flags *f)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	if (f->i++ == '.')
-		flag_num(format, f); 
-	if (format[f->i] == '*')
+	size_t i;
+	size_t j;
+	size_t rsl;
+
+	i = ft_strlen(dest);
+	rsl = ft_strlen(src);
+	j = 0;
+	if (size == 0)
+		return (rsl);
+	if (size < i)
 	{
-		f->flag_width += va_arg(f->ap, int);
-		f->i++;
+		rsl += size;
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
-}
-void not_show_num(const char *format, t_flags *f)
-{
-	while (format[f->i] >= '0' && format[f->i] <= '9')						// MAKES THE FLAG NOT PRINTABLE
+	else
 	{
-		f->i++;
+		rsl += i;
+		while (src[j] != '\0' && i < size - 1 && dest != src)
+		{
+			dest[i] = src[j];
+			j++;
+			i++;
+		}
+		dest[i] = '\0';
 	}
+	return (rsl);
 }
