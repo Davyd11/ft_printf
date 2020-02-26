@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_short.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:49:32 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 14:03:25 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/26 21:16:21 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 void	flag_num(const char *format, t_flags *f)
 {
-	if (format[f->i] == '0' || format[f->i] == '.')
+	f->width = ft_atoi(&format[f->i]);
+	//printf("%c", format[f->i]);
+	not_show_num(format, f);
+	if (format[f->i] == '.')
+	{
+		f->i++;
+		f->flag_precision = ft_atoi(&format[f->i]);
+		not_show_num(format, f);
+	}
+	/*if (format[f->i] == '0' || format[f->i] == '.')
 		f->precision = 1;
 	if (format[f->i] == '.')													//IN THE CASE OF A . WE WILL ADD A EXTRA 0
 		f->flag_width++;														//IN THE CASE OF A . WE WILL ADD A EXTRA 0
@@ -35,7 +44,7 @@ void	flag_num(const char *format, t_flags *f)
 		}
 		f->flag_width = ft_atoi(&format[f->i]);
 		not_show_num(format, f);
-	}
+	}*/
 }
 
 void	flag_sig(const char *format, t_flags *f)
