@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_int_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 23:00:11 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/02/27 15:57:56 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void uns_int(t_flags *f)
 {
  	unsigned int n;
-		
+
 	n = va_arg(f->ap, unsigned int);
 	f->var_width = ft_nbrlen(n);
 	f->len += ft_nbrlen(n);														// ADD THE LENGTH OF THE NUMBER IN THE FINAL RETURN LEN OF PRINTF

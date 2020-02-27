@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 12:02:10 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:15:11 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ void not_show_num(const char *format, t_flags *f)
 	{
 		f->i++;
 	}
+	if (ft_strchr("-*", format[f->i]))
+		flag_sig(format, f);
 }

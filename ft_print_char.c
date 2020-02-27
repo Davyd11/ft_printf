@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 13:39:24 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:37:40 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	single_char(t_flags *f)
 {
 	char *t;
 	
-	t = va_arg(f->ap, char *);
+	if (!(t = va_arg(f->ap, char *)))
+		f->len += (write(1,"(null)",6));
 	write(1, &t, 1);
 }
 
-void str_format(t_flags *f)
+void	str_format(t_flags *f)
 {	
 	char *str;
 	int sum;
@@ -39,10 +40,15 @@ void str_format(t_flags *f)
 
 	sum = 0;
 	str = va_arg(f->ap, char *);
+	if (!str)
+		str = "(null)";
 	f->var_width = ft_strlen(str);
 	if ((f->flag_precision == 0) && (f->punto == 0))								// values are empty so print the hole str
-		f->flag_precision = f->var_width;											//
+		f->flag_precision = f->var_width;											// flag_width
 	
+	if (f->flag_precision < f->var_width)
+		f->var_width = f->flag_precision;
+
 	pointer = f->flag_precision;													// variable for ptinting string
 	var_num = f->var_width;
 	spaces_char(f);

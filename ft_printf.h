@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 11:06:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:33:05 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct	s_flags
 	int			len;
 	int			i;
 	int			width;
-	int			flag_width;					// Length of spaces or ceros
-	int			var_width;//////////DELETE IN FUTURE/////////////// LENGTH OF THE VARIABLE TO COMPARE
+	int			flag_width;/////////////////// Length of spaces or ceros//////////DELETE
+	int			var_width;
 	int			flag_precision;				// DEPENDS OF THE NUMERS INDICATES WHAT IS THE CASE EXACTLY
 	int			precision;					// USE TO KNOW WHAT KIND OF FLAG ARE WE WORKING WITH
 	int			punto;						// USE TO CHECK IF THERE IS ANY DOT
