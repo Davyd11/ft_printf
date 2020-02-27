@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/24 13:26:21 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:02:10 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void not_show_sig(const char *format, t_flags *f)
 {
-	if (f->i++ == '.')
+	if ((format[f->i] == '.') || 
+	(format[f->i] >= '0' && format[f->i] <= '9'))
 		flag_num(format, f); 
 	if (format[f->i] == '*')
 	{

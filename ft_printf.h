@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/26 21:25:14 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/02/27 11:06:48 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ typedef struct	s_flags
 	int			i;
 	int			width;
 	int			flag_width;					// Length of spaces or ceros
-	int			var_width;					// LENGTH OF THE VARIABLE TO COMPARE
+	int			var_width;//////////DELETE IN FUTURE/////////////// LENGTH OF THE VARIABLE TO COMPARE
 	int			flag_precision;				// DEPENDS OF THE NUMERS INDICATES WHAT IS THE CASE EXACTLY
 	int			precision;					// USE TO KNOW WHAT KIND OF FLAG ARE WE WORKING WITH
+	int			punto;						// USE TO CHECK IF THERE IS ANY DOT
 	int			menos;
 	int			done;						//IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
 }				t_flags;

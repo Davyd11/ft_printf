@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/26 21:35:01 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/02/27 13:27:37 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	flags_to_zero(t_flags *f)
 	f->precision = 0;
 	f->done = 0;
 	f->menos = 0;
+	f->punto = 0;
 }
 
 void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
