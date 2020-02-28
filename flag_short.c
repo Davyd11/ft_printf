@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:49:32 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 12:04:16 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/28 13:57:06 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,18 @@ void	flag_num(const char *format, t_flags *f)
 		not_show_num(format, f);
 	}*/
 	//f->i++;
-	f->width = ft_atoi(&format[f->i]);
-	not_show_num(format, f);
+	if (format[f->i] == '0')
+	{
+		f->punto = 2;
+		f->i++;
+		f->flag_precision = ft_atoi(&format[f->i]);
+		not_show_num(format, f);
+	}
+	else
+	{
+		f->width = ft_atoi(&format[f->i]);
+		not_show_num(format, f);
+	}
 	if (format[f->i] == '.')
 	{
 		f->punto = 1;

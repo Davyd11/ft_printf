@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 15:33:05 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:36:47 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_flags
 	va_list		ap;
 	int			len;
 	int			i;
+	int			fast;
 	int			width;
 	int			flag_width;/////////////////// Length of spaces or ceros//////////DELETE
 	int			var_width;

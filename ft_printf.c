@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 17:41:45 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/28 10:38:06 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	flags_to_zero(t_flags *f)
 }
 
 void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
-{																				// cspdiuxX% // pxX
+{	
+	f->i--;																		// cspdiuxX% // pxX
+	if (format[f->i] == '%')
+		f->fast = 1;
+	f->i++;
 	if (format[f->i] == 'c')
 		single_char(f);
 	if (format[f->i] == 'd' || format[f->i] == 'i')								// finish the selection to aboid floats
