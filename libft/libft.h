@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:45:08 by davyd11           #+#    #+#             */
-/*   Updated: 2020/02/19 17:27:18 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:56:25 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				ft_toupper(int ch);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_itoa(int nbr);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void			ft_putnbr_fd(int nb, int fd);
+void			ft_putnbr_fd(long int nb, int fd);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *str, int fd);
 char			**ft_split(char const *s, char c);
@@ -65,7 +65,7 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-int     		ft_nbrlen(int n);
+int     		ft_nbrlen(long int n);
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));

@@ -6,19 +6,19 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 15:14:57 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:55:29 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_print_int(int n, t_flags *f)											// WORKS WITH + BUT NOT WHENE YOU ADD 0 OR .
+void ft_print_int(long int n, t_flags *f)											// WORKS WITH + BUT NOT WHENE YOU ADD 0 OR .
 {																				// FUNCTION PLACE A + IF THE FLAG IS +
 	ft_putnbr_fd(n, 1);
 	f->done = 1;
 }
 
-void 	spaces(t_flags *f, int n)
+void 	spaces(t_flags *f, long int n)
 {
 	if (n < 0)
 		f->width--;
@@ -53,7 +53,7 @@ void 	spaces(t_flags *f, int n)
 			
 	}
 }
-int		ceros(t_flags *f, int n)
+int		ceros(t_flags *f, long int n)
 {
 	int signo;
 
@@ -77,23 +77,18 @@ int		ceros(t_flags *f, int n)
 }
 void 	int_format(t_flags *f)
 {
-	int n;
+	long int n;
 	int yes;
 	
 	yes = 1;
 	n = va_arg(f->ap, int);
-	
 	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
-	{
 		yes = 0;
-	}
 	else
 	{
 		f->var_width = ft_nbrlen(n);
 		f->len += ft_nbrlen(n);
-	}
-	
-		
+	}		
 	if (f->fast != 1)	
 	{
 		if (f->punto == 0)
@@ -103,8 +98,7 @@ void 	int_format(t_flags *f)
 		spaces(f, n);
 		if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
 			n = n * (-1);
-	}
-																				// SO THE SIGNE ISN'T DUPLICATED
+	}																				// SO THE SIGNE ISN'T DUPLICATED
 	if (yes == 1)
 		ft_print_int(n, f);															// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
 	f->done = 1;

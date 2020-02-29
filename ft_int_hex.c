@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 15:57:56 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 17:27:00 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,42 @@
 
 void uns_int(t_flags *f)
 {
- 	unsigned int n;
-
-	n = va_arg(f->ap, unsigned int);
-	f->var_width = ft_nbrlen(n);
-	f->len += ft_nbrlen(n);														// ADD THE LENGTH OF THE NUMBER IN THE FINAL RETURN LEN OF PRINTF
-	printf("%d", f->var_width);	/////////////////////
-	printf("%d", n);			/////////////////////
-	spaces(f, n);
-	if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
-		n = n * (-1);															// SO THE SIGNE ISN'T DUPLICATED
-	ft_print_int(n, f);															// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
+	long int n;
+	int yes;
+	
+	yes = 1;
+	n = va_arg(f->ap, int);
+	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
+		yes = 0;
+	else
+	{
+		if (n < 0)
+			n = 4294967296 - (n * -1);
+		f->var_width = ft_nbrlen(n);
+		f->len += ft_nbrlen(n);
+	}
+	if (n < 0)
+		n = 4294967296 - (n * -1);
+	if (n < 0)
+	{
+		n = 4294967296 - (n * -1);
+	}		
+	if (f->fast != 1)	
+	{
+		if (f->punto == 0)
+			f->flag_precision = f->width;
+		if(n < 0)
+			f->var_width--;
+		spaces(f, n);
+		ceros(f, n);														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
+	}																				// SO THE SIGNE ISN'T DUPLICATED
+	if (yes == 1)
+	{
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, 1);
+		ft_putchar_fd((char)(n % 10 + 48), 1);
+	}														// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
+	f->done = 1;
 	spaces(f, n);
 }
 

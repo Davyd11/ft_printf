@@ -6,13 +6,13 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:25:56 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/19 17:26:42 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:54:41 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_nbrlen(int n)
+int     ft_nbrlen(long int n)
 {
     int     i;
     i = 1;

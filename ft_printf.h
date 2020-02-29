@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/28 10:36:47 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:55:39 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct	s_flags
 int			ft_printf(char *format, ...);
 
 void 		int_format(t_flags *f);
-void		spaces(t_flags *f, int n);
-int			ceros(t_flags *f, int n);
-void	 	ft_print_int(int n, t_flags *f);
+void		spaces(t_flags *f, long int n);
+int			ceros(t_flags *f, long int n);
+void	 	ft_print_int(long int n, t_flags *f);
 
 void 		str_format(t_flags *f);
 void		single_char(t_flags *f);
