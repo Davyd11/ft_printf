@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/28 13:40:24 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 15:14:57 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ void 	spaces(t_flags *f, int n)
 		f->width--;
 	if ((f->menos == 0) && (f->done == 0))										//FRACMENTED WHILE FOR THE TIMEOUTS
 	{
-		if (((f->punto == 1) && (f->flag_precision > f-> var_width))
+		if (((f->punto >= 1) && (f->flag_precision > f-> var_width))
 		&& (f->width != 0) && (f->width > f->var_width))
 		{
-			f->width -= f->width - f->flag_precision;
-			if (n < 0)
-				f->width += 2;
+			f->width -= f->flag_precision;
+			f->width += f->var_width;
 		}
-		while (f->width > f->var_width)
+		while ((f->width > f->var_width) && (f->punto != 2))
 		{
 			write(1," ",1);
 			f->len++;
@@ -64,7 +63,7 @@ int		ceros(t_flags *f, int n)
 		write(1,"-",1);
 		signo = 1;
 	}
-	if((n < 0) && f->punto == 2)
+	if((n < 0) && (f->punto == 2))
 		 	f->flag_precision--;
 	while ((f->flag_precision > f->var_width && f->menos == 0 && f->punto > 0) || 
 	(f->flag_precision > f->var_width && f->menos == 1 && f->punto > 0))
@@ -79,10 +78,22 @@ int		ceros(t_flags *f, int n)
 void 	int_format(t_flags *f)
 {
 	int n;
+	int yes;
 	
+	yes = 1;
 	n = va_arg(f->ap, int);
-	f->var_width = ft_nbrlen(n);
-	f->len += ft_nbrlen(n);
+	
+	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
+	{
+		yes = 0;
+	}
+	else
+	{
+		f->var_width = ft_nbrlen(n);
+		f->len += ft_nbrlen(n);
+	}
+	
+		
 	if (f->fast != 1)	
 	{
 		if (f->punto == 0)
@@ -92,8 +103,10 @@ void 	int_format(t_flags *f)
 		spaces(f, n);
 		if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
 			n = n * (-1);
-			
-	}														// SO THE SIGNE ISN'T DUPLICATED
-	ft_print_int(n, f);															// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
+	}
+																				// SO THE SIGNE ISN'T DUPLICATED
+	if (yes == 1)
+		ft_print_int(n, f);															// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
+	f->done = 1;
 	spaces(f, n);
 	}
