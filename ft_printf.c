@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 15:31:34 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 17:59:28 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,20 @@ void format_sorting(const char *format, t_flags *f)								// send to specific f
 	if (format[f->i] == '%')
 		f->fast = 1;
 	f->i++;
-	if (format[f->i] == 'c')
+	if (format[f->i] == 'c')//
 		single_char(f);
-	if (format[f->i] == 'd' || format[f->i] == 'i')								// finish the selection to aboid floats
+	if (format[f->i] == 'd' || format[f->i] == 'i')//
 		int_format(f);
-	if (format[f->i] == 's')
+	if (format[f->i] == 's')//
 		str_format(f);
-	if (format[f->i] == 'u')// Make the transformation from int to unsigned int
+	if (format[f->i] == 'u')//
 		uns_int(f);
 	if (format[f->i] == 'p')
 		point_add(f);
+	if (format[f->i] == 'x')
+		hex_x(f, "0123456789abcdef");
+	if (format[f->i] == 'X')
+		hex_X(f, "0123456789ABCDEF");
 }
 
 void	percent_finder(const char *format, t_flags *f)

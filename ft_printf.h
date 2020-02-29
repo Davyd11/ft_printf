@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 16:55:39 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 18:01:29 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,6 @@ void		not_show_num(const char *format, t_flags *f);
 
 void		uns_int(t_flags *f);
 void		point_add(t_flags *f);
+
+void		hex_X(t_flags *f, char *letters);
+void		hex_x(t_flags *f, char *letters);

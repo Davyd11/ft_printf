@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 17:27:00 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/02/29 18:20:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,36 @@ void uns_int(t_flags *f)
 	}														// IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
 	f->done = 1;
 	spaces(f, n);
+}
+
+void	hex_x(t_flags *f, char *letters)// NOT WORKING
+{
+	unsigned int n;
+	int point;
+	char *str[18];
+	int i;
+
+	i = 0;
+	n = va_arg(f->ap, unsigned int);
+	point = n;	
+	while (n > 16)
+	{
+		point = n % 16;
+		str[i] = &letters[point];
+		i++;
+	}
+	str[i] = &letters[point];
+	//printf("---%u---", n);
+}
+
+
+void	hex_X(t_flags *f, char *letters)// NOT WORKING
+{
+	unsigned int n;
+
+	n = va_arg(f->ap, unsigned int);
+	printf("%d", n);
+	printf("%s", letters);
 }
 
 void	point_add(t_flags *f)// NOT WORKING FOR NOW
