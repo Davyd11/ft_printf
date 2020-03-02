@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 17:59:28 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:11:51 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void format_sorting(const char *format, t_flags *f)								// send to specific f
 	if (format[f->i] == 'x')
 		hex_x(f, "0123456789abcdef");
 	if (format[f->i] == 'X')
-		hex_X(f, "0123456789ABCDEF");
+		hex_x(f, "0123456789ABCDEF");
 }
 
 void	percent_finder(const char *format, t_flags *f)

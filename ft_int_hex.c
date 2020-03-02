@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_int_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 18:20:30 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/02 23:07:09 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,35 +52,48 @@ void uns_int(t_flags *f)
 	f->done = 1;
 	spaces(f, n);
 }
-
-void	hex_x(t_flags *f, char *letters)// NOT WORKING
+//////////////////////////////////////////////////////
+void	hex_putnbrbase(t_flags *f, int n, char *base, int baselen)
 {
-	unsigned int n;
-	int point;
-	char *str[18];
-	int i;
-
-	i = 0;
-	n = va_arg(f->ap, unsigned int);
-	point = n;	
-	while (n > 16)
+	if (n >= baselen)
 	{
-		point = n % 16;
-		str[i] = &letters[point];
-		i++;
+		hex_putnbrbase(f, n / baselen, base, baselen);
+		hex_putnbrbase(f, n % baselen, base, baselen);
 	}
-	str[i] = &letters[point];
-	//printf("---%u---", n);
+	else
+	{
+		write(1, &base[n], 1);
+		f->len++;
+	}	
 }
 
-
-void	hex_X(t_flags *f, char *letters)// NOT WORKING
+void	hex_printer(t_flags *f, unsigned int n, char *base)
 {
-	unsigned int n;
+	if (f->flag_precision && !f->precision && !n)
+	{
+		if (f->width)
+		{
+			write(1, " ", 1);
+			f->len++;
+		}
+	}
+	else
+		hex_putnbrbase(f, n, base, ft_strlen(base));	
+}
+//////////////////////////////////////////////////////
+void	hex_x(t_flags *f, char *letters)
+{
+	int		n;
 
-	n = va_arg(f->ap, unsigned int);
-	printf("%d", n);
-	printf("%s", letters);
+	n = va_arg(f->ap, int);
+	f->var_width = hex_nbrlen(n, letters);
+	if (f->fast != 1)	
+	{
+		spaces(f, n);
+	}				
+	hex_printer(f, n, letters);
+	f->done = 1;
+	spaces(f, n);
 }
 
 void	point_add(t_flags *f)// NOT WORKING FOR NOW

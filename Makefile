@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
+#    By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/02/29 17:31:57 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/03/02 22:16:32 by davyd11          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ LIB_NAME = 	ft_strlen.c \
 			ft_putnbr_fd.c \
 			ft_strchr.c \
 			ft_atoi.c \
-			ft_nbrlen.c
+			ft_nbrlen.c \
+			ft_nbr_hex_len.c\
 			
 
 
