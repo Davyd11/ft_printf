@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 15:06:50 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 18:34:10 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,16 @@ void	hex_pointer(t_flags *f, char *letters)
 	
 	yes = 1;
 	n = va_arg(f->ap,long int);
-	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
+	if (((f->flag_precision == 0 && n == 0) && (f->punto > 0)))
+	{
 		yes = 0;
+		f->var_width = 2;
+	}
 	else
 	{
 		f->var_width = 11;
+		if (n == 0)
+			f->var_width = 3;
 	}
 	if (f->fast != 1)	
 	{
@@ -119,12 +124,10 @@ void	hex_pointer(t_flags *f, char *letters)
 		if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
 			n = n * (-1);
 	}
+	write(1, "0x", 2);
+	f->len += 2;
 	if (yes == 1)
-	{
-		write(1, "0x", 2);
-		f->len += 2;
 		hex_putnbrbase(f, n, letters, ft_strlen(letters));
-	}
 	f->done = 1;
 	spaces(f, n);
 }

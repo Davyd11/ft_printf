@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 14:21:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 18:18:32 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_flags
 	int			precision;					// USE TO KNOW WHAT KIND OF FLAG ARE WE WORKING WITH
 	int			punto;						// USE TO CHECK IF THERE IS ANY DOT
 	int			menos;
+	int			percent;
 	int			done;						//IF TRUE NUMBERS HAVE PRINT AND SPACES CAN BE PRINTENTED AFTER IF THERE IS A - IN THE FLAG
 }				t_flags;
 
@@ -53,3 +54,4 @@ void		point_add(t_flags *f);
 
 void		hex_x(t_flags *f, char *letters);
 void		hex_pointer(t_flags *f, char *letters);
+void 		percent(const char *format, t_flags *f);

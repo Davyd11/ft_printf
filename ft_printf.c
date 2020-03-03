@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 14:58:01 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 18:20:39 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	flags_to_zero(t_flags *f)
 	f->done = 0;
 	f->menos = 0;
 	f->punto = 0;
+	f->percent = 0;
 }
 
 void format_sorting(const char *format, t_flags *f)								// send to specific function depending on flag
@@ -52,16 +53,19 @@ void	percent_finder(const char *format, t_flags *f)
 		if (format[f->i] == '%')
 		{
 			f->i++;
-			flags_to_zero(f);
-			if (format[f->i] == '%')///////////////////////
+			/*if (format[f->i] == '%')
 			{
 				write(1, &format[f->i], 1);
 				f->len++;
-			}//////////////////////////////////////////////////
+				f->percent = 1;
+			}*/
+			flags_to_zero(f);
 			if (ft_strchr("-*", format[f->i]))
 				flag_sig(format, f);
 			if (ft_strchr(".0123456789", format[f->i]))
 				flag_num(format, f);
+			if (ft_strchr("%", format[f->i]))
+				percent(format, f);
 			if (ft_strchr("cspdiuxX", format[f->i]))
 				format_sorting(format, f);
 		}

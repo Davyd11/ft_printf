@@ -6,13 +6,13 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:49:32 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 13:18:37 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 18:13:05 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	flag_num(const char *format, t_flags *f)
+void		flag_num(const char *format, t_flags *f)
 {
 	if (format[f->i] == '0')
 	{
@@ -38,7 +38,7 @@ void	flag_num(const char *format, t_flags *f)
 	}
 }
 
-void	flag_sig(const char *format, t_flags *f)
+void		flag_sig(const char *format, t_flags *f)
 {
 	if (format[f->i] == '-')
 	{
@@ -65,4 +65,23 @@ void	flag_sig(const char *format, t_flags *f)
 	}
 	not_show_sig(format, f);
 	not_show_num(format, f);
+}
+
+void		percent(const char *format, t_flags *f)
+{
+	if (f->width > 0 || f->flag_precision > 0)
+	{
+		f->var_width = 1;
+		if (f->width == 0)
+			f->width = f->flag_precision;
+		if ((f->fast != 1 && f->width > 1)&& f->menos == 0)
+		{
+			spaces(f, 1);
+			ceros(f, 1);
+		}
+	}
+	write(1, &format[f->i], 1);
+	f->len++;
+	f->done = 1;
+	spaces(f, 1);
 }
