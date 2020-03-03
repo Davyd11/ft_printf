@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/02 22:11:51 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/03/03 14:58:01 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void format_sorting(const char *format, t_flags *f)								// send to specific f
 	if (format[f->i] == 'u')//
 		uns_int(f);
 	if (format[f->i] == 'p')
-		point_add(f);
+		hex_pointer(f, "0123456789abcdef");
 	if (format[f->i] == 'x')
 		hex_x(f, "0123456789abcdef");
 	if (format[f->i] == 'X')
@@ -53,11 +53,11 @@ void	percent_finder(const char *format, t_flags *f)
 		{
 			f->i++;
 			flags_to_zero(f);
-			if (format[f->i] == '%')
+			if (format[f->i] == '%')///////////////////////
 			{
 				write(1, &format[f->i], 1);
 				f->len++;
-			}
+			}//////////////////////////////////////////////////
 			if (ft_strchr("-*", format[f->i]))
 				flag_sig(format, f);
 			if (ft_strchr(".0123456789", format[f->i]))

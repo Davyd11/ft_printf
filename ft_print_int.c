@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/29 16:55:29 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:11:04 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void 	int_format(t_flags *f)
 	{
 		f->var_width = ft_nbrlen(n);
 		f->len += ft_nbrlen(n);
-	}		
+	}
 	if (f->fast != 1)	
 	{
 		if (f->punto == 0)

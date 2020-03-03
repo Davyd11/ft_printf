@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:31:54 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/02 23:08:13 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/03/03 15:07:30 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	main(void)
 	//int p;
 	//float f;
 	//double d;
-	//char *ch;
+	char *ch;
+	char *pp;
+	char *jj;
 	//char c;
 
 	//i = -123;
@@ -26,7 +28,9 @@ int	main(void)
 	//f = 3209.1417;
 	//d = 123.456789;
 	//c = 'D';
-	//ch = "Estamos genial tio";
+	pp = "uweyw2832983429wieu";
+	jj = "djfhkslskjf";
+	ch = "Estamos genial tio";
 	/*char *s = "Mundo";
 	int i = 56;
 	unsigned int x = 0;*/
@@ -37,14 +41,14 @@ int	main(void)
 		printf("\nOriginal: \n");
 		
 		/////////////////////////////////////////////
-		   printf("--%d", printf("%x", 12234));//////
+		   printf("--%d", printf("%-3p", pp));//////
 		/////////////////////////////////////////////
 		
 		printf("\n\n");
 		printf("FT_COPY: \n");
 		
 		//////////////////////////////////////////////
-		printf("--%d",ft_printf("%x", 12234));//////
+		printf("--%d",ft_printf("%-3p", pp));//////
 		//////////////////////////////////////////////
 		
 		printf("\n----------------------\n\n");

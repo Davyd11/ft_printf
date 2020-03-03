@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/02/27 15:15:11 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:01:21 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ void not_show_sig(const char *format, t_flags *f)
 {
 	if ((format[f->i] == '.') || 
 	(format[f->i] >= '0' && format[f->i] <= '9'))
-		flag_num(format, f); 
-	if (format[f->i] == '*')
 	{
-		f->flag_width += va_arg(f->ap, int);
 		f->i++;
+		if (format[f->i] != '*')
+		{
+			f->i--;
+			flag_num(format, f);
+		}
+		if (format[f->i] == '*')
+			flag_sig(format, f);
 	}
-	else	
-		f->flag_width = ft_atoi(&format[f->i]);
+		
 }
 void not_show_num(const char *format, t_flags *f)
 {
