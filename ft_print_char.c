@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/04 14:05:25 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/04 15:45:02 by davyd11          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void	str_format(t_flags *f)
 		str = "(null)";
 	f->var_width = ft_strlen(str);
 	if ((f->flag_precision == 0) && (f->punto == 0))								// values are empty so print the hole str
-	f->flag_precision = f->var_width;											// flag_width
+		f->flag_precision = f->var_width;											// flag_width
 	if (f->punto == 2)							// IN CASE THERE ARE ONLY CEROS BEFORE LETTER MAKES THE PROGRAM PRINT THE ARGUMENT
 		f->flag_precision = f->var_width;
+	if (f->flag_precision < 0)/////////////////////////////////////////////////////
+		f->flag_precision = f->var_width;//////////////////////////////////////////
 	if (f->flag_precision < f->var_width)
 		f->var_width = f->flag_precision;
 
