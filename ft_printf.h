@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 18:18:32 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/04 13:29:39 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		flag_sig(const char *format, t_flags *f);
 
 void		not_show_sig(const char *format, t_flags *f);
 void		not_show_num(const char *format, t_flags *f);
+void		hex_putnbrbase_len(t_flags *f,long int n, char *base, int baselen);
 
 void		uns_int(t_flags *f);
 void		point_add(t_flags *f);

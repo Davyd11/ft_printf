@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+         #
+#    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/03/02 22:16:32 by davyd11          ###   ########.fr        #
+#    Updated: 2020/03/04 12:53:57 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ $(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
 	@$(CC) -o $@ -c $<
 
 compile:
-	gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
+	#gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
+	gcc $(SRC) $(LIB) Main.c
 
 clean:
 	@rm -rf $(OBJ) $(OBJLIB)

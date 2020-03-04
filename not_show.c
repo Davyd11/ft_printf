@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 14:01:21 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:10:32 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,17 @@ void not_show_num(const char *format, t_flags *f)
 	}
 	if (ft_strchr("-*", format[f->i]))
 		flag_sig(format, f);
+}
+
+void	hex_putnbrbase_len(t_flags *f,long int n, char *base, int baselen)
+{
+	if (n >= baselen)
+	{
+		hex_putnbrbase_len(f, n / baselen, base, baselen);
+		hex_putnbrbase_len(f, n % baselen, base, baselen);
+	}
+	else
+	{
+		f->var_width++;
+	}
 }

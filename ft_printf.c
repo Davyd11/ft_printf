@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/03 18:20:39 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/04 12:47:53 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flags_to_zero(t_flags *f)
 {
-	f->flag_width = 0;
+	f->var_width = 0;
 	f->var_width = 0;
 	f->flag_precision = 0;
 	f->precision = 0;
@@ -53,18 +53,19 @@ void	percent_finder(const char *format, t_flags *f)
 		if (format[f->i] == '%')
 		{
 			f->i++;
-			/*if (format[f->i] == '%')
+			flags_to_zero(f);
+			if (format[f->i] == '%')
 			{
 				write(1, &format[f->i], 1);
 				f->len++;
 				f->percent = 1;
-			}*/
-			flags_to_zero(f);
+				f->width -= 32766; //chapuza porque en los flags a cero no me resta width
+			}
 			if (ft_strchr("-*", format[f->i]))
 				flag_sig(format, f);
 			if (ft_strchr(".0123456789", format[f->i]))
 				flag_num(format, f);
-			if (ft_strchr("%", format[f->i]))
+			if (ft_strchr("%", format[f->i]) && f->percent == 0)
 				percent(format, f);
 			if (ft_strchr("cspdiuxX", format[f->i]))
 				format_sorting(format, f);
