@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 13:23:25 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:13:20 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		ft_printf(char *format, ...)
 	}
 	else																		//just print on screen all text(no flags)
 	{
-		ft_putstr_fd(format, 0);
+		ft_putstr_fd(format, 1);
 		f.len = ft_strlen(format);
 	}
 	va_end(f.ap);
