@@ -6,26 +6,39 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 12:08:10 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:06:58 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void 	spaces_char(t_flags *f)
+void	print_char(t_flags *f)
 {
-	while ((f->width > f->var_width && f->menos == 0 && f->done == 0) || 
+	if ((f->flag_precision == 0) && (f->punto == 0))
+		f->flag_precision = f->var_width;
+	if (f->punto == 2)
+		f->flag_precision = f->var_width;
+	if (f->flag_precision < 0)
+		f->flag_precision = f->var_width;
+	if (f->flag_precision < f->var_width)
+		f->var_width = f->flag_precision;
+}
+
+void	spaces_char(t_flags *f)
+{
+	while ((f->width > f->var_width && f->menos == 0 && f->done == 0) ||
 	(f->width > f->var_width && f->menos == 1 && f->done == 1))
 	{
-		write(1," ",1);
+		write(1, " ", 1);
 		f->len++;
 		f->width--;
 	}
 }
+
 void	single_char(t_flags *f)
 {
 	char *t;
-	
+
 	t = va_arg(f->ap, char *);
 	f->width--;
 	if (f->fast != 1)
@@ -37,27 +50,19 @@ void	single_char(t_flags *f)
 }
 
 void	str_format(t_flags *f)
-{	
-	char *str;
-	int sum;
-	int pointer;
-	int var_num;
+{
+	char	*str;
+	int		sum;
+	int		pointer;
+	int		var_num;
 
 	sum = 0;
 	str = va_arg(f->ap, char *);
 	if (!str)
 		str = "(null)";
-	f->var_width = ft_strlen(str);///////////////////////////////////////////
-	if ((f->flag_precision == 0) && (f->punto == 0))								// values are empty so print the hole str
-		f->flag_precision = f->var_width;											// flag_width
-	if (f->punto == 2)							// IN CASE THERE ARE ONLY CEROS BEFORE LETTER MAKES THE PROGRAM PRINT THE ARGUMENT
-		f->flag_precision = f->var_width;
-	if (f->flag_precision < 0)/////////////////////////////////////////////////////
-		f->flag_precision = f->var_width;//////////////////////////////////////////
-	if (f->flag_precision < f->var_width)
-		f->var_width = f->flag_precision;
-
-	pointer = f->flag_precision;													// variable for ptinting string
+	f->var_width = ft_strlen(str);
+	print_char(f);
+	pointer = f->flag_precision;
 	var_num = f->var_width;
 	if (f->fast != 1)
 		spaces_char(f);

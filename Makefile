@@ -6,7 +6,7 @@
 #    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/03/05 14:04:10 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/03/05 17:51:22 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_NAME =	ft_printf.c \
 			flag_short.c \
 			not_show.c \
 			ft_int_hex.c \
+			print_utils.c \
 			
 
 
@@ -70,8 +71,7 @@ $(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
 	@$(CC) -o $@ -c $<
 
 compile:
-	gcc -Wall -Wextra -Werror -g $(SRC) $(LIB) Main.c
-	#gcc -g $(SRC) $(LIB) Main.c
+	gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
 
 clean:
 	@rm -rf $(OBJ) $(OBJLIB)
@@ -82,8 +82,6 @@ fclean: clean
 	@rm -rf *.out
 	@rm -rf $(OBJLIB_PATH)
 	
-	
-
 re: fclean all
 
 .PHONY: fclean clean re
