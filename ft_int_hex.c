@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/04 14:12:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:16:37 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void uns_int(t_flags *f)
 	spaces(f, n);
 }
 //////////////////////////////////////////////////////
-void	hex_putnbrbase(t_flags *f,long int n, char *base, int baselen)
+void	hex_putnbrbase(t_flags *f,unsigned long int n, char *base, unsigned int baselen)
 {
 	if (n >= baselen)
 	{
@@ -98,7 +98,7 @@ void	hex_x(t_flags *f, char *letters)
 
 void	hex_pointer(t_flags *f, char *letters)
 {
-	long int	n;
+	unsigned long int	n;
 	int yes;
 	
 	yes = 1;
@@ -121,7 +121,6 @@ void	hex_pointer(t_flags *f, char *letters)
 			f->flag_precision = f->width;
 		if(n < 0)
 			f->var_width--;
-		/////////////////////////////////////////////////////printf("%d", f->flag_precision);
 		spaces(f, n);
 		if ((ceros(f, n) > 0))														// CHANGE THE SIGN OF THE NUMBER IN CASE IT HAS OUTPUT THE SIGNED BEFORE
 			n = n * (-1);

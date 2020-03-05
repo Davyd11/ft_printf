@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/04 15:45:02 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/03/05 12:08:10 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	str_format(t_flags *f)
 	str = va_arg(f->ap, char *);
 	if (!str)
 		str = "(null)";
-	f->var_width = ft_strlen(str);
+	f->var_width = ft_strlen(str);///////////////////////////////////////////
 	if ((f->flag_precision == 0) && (f->punto == 0))								// values are empty so print the hole str
 		f->flag_precision = f->var_width;											// flag_width
 	if (f->punto == 2)							// IN CASE THERE ARE ONLY CEROS BEFORE LETTER MAKES THE PROGRAM PRINT THE ARGUMENT

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_short.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davyd11 <davyd11@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:49:32 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/04 15:44:47 by davyd11          ###   ########.fr       */
+/*   Updated: 2020/03/05 13:15:42 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ void		flag_num(const char *format, t_flags *f)
 			f->punto = 0;
 		else
 		{
-			f->punto = 2;
-			f->i++;
+			if (f->menos == 0)
+				f->punto = 2;
+			if (format[f->i + 1])
+				f->i++;
+			else
+				return ;
 		}
 	}
 	if (format[f->i] == '*')
@@ -34,7 +38,10 @@ void		flag_num(const char *format, t_flags *f)
 	if (format[f->i] == '.')
 	{
 		f->punto = 1;
-		f->i++;
+		if (format[f->i + 1])
+			f->i++;
+		else
+			return ;
 		if (format[f->i] == '*')
 			flag_sig(format, f);
 		else
@@ -50,7 +57,10 @@ void		flag_sig(const char *format, t_flags *f)
 	if (format[f->i] == '-')
 	{
 		f->menos = 1;
-		f->i++;
+		if (format[f->i + 1])
+			f->i++;
+		else
+			return ;
 	}
 	if (format[f->i] == '*')
 	{	
@@ -60,7 +70,10 @@ void		flag_sig(const char *format, t_flags *f)
 			f->punto = 1;
 			f->i++;
 			f->flag_precision = va_arg(f->ap, int);
-			f->i++;
+			if (format[f->i + 1])
+				f->i++;
+			else
+				return ;
 		}
 		else
 		{
@@ -72,7 +85,10 @@ void		flag_sig(const char *format, t_flags *f)
 				f->punto = 0;
 				f->menos = 1;
 			}
-			f->i++;
+			if (format[f->i + 1])
+				f->i++;
+			else
+				return ;
 		}
 	}
 	not_show_sig(format, f);

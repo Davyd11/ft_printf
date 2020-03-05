@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/04 12:47:53 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:23:25 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	percent_finder(const char *format, t_flags *f)
 	{
 		if (format[f->i] == '%')
 		{
-			f->i++;
+			if (format[f->i + 1])
+				f->i++;
+			else
+				return ;
 			flags_to_zero(f);
 			if (format[f->i] == '%')
 			{
