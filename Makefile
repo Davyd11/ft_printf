@@ -6,7 +6,7 @@
 #    By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 15:18:42 by davyd11           #+#    #+#              #
-#    Updated: 2020/03/05 17:51:22 by dpuente-         ###   ########.fr        #
+#    Updated: 2020/03/06 17:04:35 by dpuente-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ $(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
 	@$(CC) -o $@ -c $<
 
 compile:
-	gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
+	#gcc -Wall -Wextra -Werror $(SRC) $(LIB) Main.c
+	gcc $(SRC) $(LIB) Main.c
 
 clean:
 	@rm -rf $(OBJ) $(OBJLIB)

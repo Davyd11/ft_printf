@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 18:06:58 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:23:13 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,17 @@ void	str_format(t_flags *f)
 	pointer = f->flag_precision;
 	var_num = f->var_width;
 	if (f->fast != 1)
-		spaces_char(f);
+	{
+		if (f->punto != 2)
+			spaces_char(f);
+	///////////////////////////////////////
+		if (f->punto == 2 && f->width > 0)
+		{
+			f->flag_precision = f->width;
+			ceros(f, f->var_width);
+		}
+	}
+	////////////////////////////////////////
 	while ((pointer && var_num))
 	{
 		write(1, &str[sum], 1);

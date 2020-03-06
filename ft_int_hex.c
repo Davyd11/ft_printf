@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/06 11:42:48 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:42:09 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		hex_x(t_flags *f, char *letters)
 	int			yes;
 
 	yes = 1;
-	n = va_arg(f->ap, long int);
+	n = va_arg(f->ap, unsigned int);
 	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
 		yes = 0;
 	else
@@ -104,11 +104,11 @@ void		hex_x(t_flags *f, char *letters)
 
 void		hex_pointer(t_flags *f, char *letters)
 {
-	unsigned long	int		n;
+	unsigned long			n;
 	int						yes;
 
 	yes = 1;
-	n = va_arg(f->ap, long int);
+	n = va_arg(f->ap, unsigned long);
 	if (((f->flag_precision == 0 && n == 0) && (f->punto > 0)))
 	{
 		yes = 0;
