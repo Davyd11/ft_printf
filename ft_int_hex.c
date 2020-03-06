@@ -6,16 +6,37 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 18:09:52 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:42:48 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void		uns_utils(t_flags *f, long int n, int yes)
+{
+	if (f->fast != 1)
+	{
+		if (f->punto == 0)
+			f->flag_precision = f->width;
+		if (n < 0)
+			f->var_width--;
+		spaces(f, n);
+		ceros(f, n);
+	}
+	if (yes == 1)
+	{
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, 1);
+		ft_putchar_fd((char)(n % 10 + 48), 1);
+	}
+	f->done = 1;
+	spaces(f, n);
+}
+
 void		uns_int(t_flags *f)
 {
-	long int	n;
-	int 		yes;
+	long	int	n;
+	int			yes;
 
 	yes = 1;
 	n = va_arg(f->ap, int);
@@ -34,23 +55,7 @@ void		uns_int(t_flags *f)
 	{
 		n = 4294967296 - (n * -1);
 	}
-	if (f->fast != 1)
-	{
-		if (f->punto == 0)
-			f->flag_precision = f->width;
-		if (n < 0)
-			f->var_width--;
-		spaces(f, n);
-		ceros(f, n);
-	}
-	if (yes == 1)
-	{
-		if (n >= 10)
-			ft_putnbr_fd(n / 10, 1);
-		ft_putchar_fd((char)(n % 10 + 48), 1);
-	}
-	f->done = 1;
-	spaces(f, n);
+	uns_utils(f, n, yes);
 }
 
 void		hex_putnbrbase(t_flags *f, unsigned long int n,
@@ -99,8 +104,8 @@ void		hex_x(t_flags *f, char *letters)
 
 void		hex_pointer(t_flags *f, char *letters)
 {
-	unsigned long int n;
-	int               yes;
+	unsigned long	int		n;
+	int						yes;
 
 	yes = 1;
 	n = va_arg(f->ap, long int);
@@ -116,20 +121,5 @@ void		hex_pointer(t_flags *f, char *letters)
 		if (n == 0)
 			f->var_width = 3;
 	}
-	if (f->fast != 1)
-	{
-		if (f->punto == 0)
-			f->flag_precision = f->width;
-		if (n < 0)
-			f->var_width--;
-		spaces(f, n);
-		if ((ceros(f, n) > 0))
-			n = n * (-1);
-	}
-	write(1, "0x", 2);
-	f->len += 2;
-	if (yes == 1)
-		hex_putnbrbase(f, n, letters, ft_strlen(letters));
-	f->done = 1;
-	spaces(f, n);
+	hex_pointer_utils(f, letters, n, yes);
 }

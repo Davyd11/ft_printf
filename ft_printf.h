@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:54:52 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 18:02:16 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:36:42 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int				ceros(t_flags *f, long int n);
 void			ft_print_int(long int n, t_flags *f);
 void			spaces_after(t_flags *f, long int n);
 void			format_utils(t_flags *f, long int n, int yes);
+void			hex_pointer_utils(t_flags *f, char *letters,
+unsigned long int n, int yes);
 void			str_format(t_flags *f);
 void			single_char(t_flags *f);
 void			spaces_char(t_flags *f);
