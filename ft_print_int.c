@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/09 14:21:15 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 18:47:08 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	int_format(t_flags *f)
 
 	yes = 1;
 	n = va_arg(f->ap, int);
-	if ((f->flag_precision == 0 && n == 0) && (f->punto > 0))
+	if ((f->flag_precision == 0 && n == 0) && (f->punto == 1))
 		yes = 0;
 	else
 	{
