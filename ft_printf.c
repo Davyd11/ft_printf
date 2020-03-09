@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:45 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 17:27:32 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 18:06:20 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	flags_to_zero(t_flags *f)
 {
-	f->var_width = 0;
 	f->var_width = 0;
 	f->flag_precision = 0;
 	f->precision = 0;
@@ -30,7 +29,7 @@ void	format_sorting(const char *format, t_flags *f)
 	if (format[f->i] == '%')
 		f->fast = 1;
 	f->i++;
-	if (format[f->i] == 'c')
+	if (format[f->i] == 'c' || format[f->i] == 'C')
 		single_char(f);
 	if (format[f->i] == 'd' || format[f->i] == 'i')
 		int_format(f);
@@ -68,6 +67,8 @@ void	percent_finder(const char *format, t_flags *f)
 				f->i++;
 			else
 				return ;
+			if (format[f->i] == '#' && format[f->i + 1])
+				f->i++;
 			flags_to_zero(f);
 			if (format[f->i] == '%')
 			{

@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:38:28 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/05 17:49:17 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 16:54:11 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	not_show_sig(const char *format, t_flags *f)
 		}
 		if (format[f->i] == '*')
 			flag_sig(format, f);
+	}
+	if ((format[f->i] == '-') || (format[f->i] == '+'))
+	{
+		if (format[f->i + 1])
+			f->i++;
+		else
+			return ;
 	}
 }
 

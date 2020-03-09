@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/06 18:42:09 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 16:18:14 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,7 @@ void		hex_pointer(t_flags *f, char *letters)
 		if (n == 0)
 			f->var_width = 3;
 	}
+	if (f->flag_precision > f->var_width && f->punto == 1)
+		f->var_width -= 2;
 	hex_pointer_utils(f, letters, n, yes);
 }

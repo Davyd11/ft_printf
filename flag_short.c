@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:49:32 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/06 11:21:53 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 18:17:17 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void		precision(const char *format, t_flags *f)
 
 void		flag_num(const char *format, t_flags *f)
 {
+	if (format[f->i] == '#' && format[f->i + 1])
+		f->i++;
 	if (format[f->i] == '0')
 	{
 		if (format[f->i + 1] == '-')
@@ -47,6 +49,14 @@ void		flag_num(const char *format, t_flags *f)
 				return ;
 		}
 	}
+	if (format[f->i] == ' ')
+	{
+		f->punto = 0;
+		if (format[f->i + 1])
+			f->i++;
+		else
+			return ;
+	}
 	if (format[f->i] == '*')
 		flag_sig(format, f);
 	else
@@ -59,10 +69,12 @@ void		flag_num(const char *format, t_flags *f)
 
 void		flag_conditions(const char *format, t_flags *f)
 {
-	if (format[f->i] == '.')
+	
+	if (format[f->i - 1] == '#' && format[f->i + 1])
+		f->i++;
+	if (format[f->i - 1] == '.')
 	{
 		f->punto = 1;
-		f->i++;
 		f->flag_precision = va_arg(f->ap, int);
 		if (format[f->i + 1])
 			f->i++;
@@ -71,7 +83,6 @@ void		flag_conditions(const char *format, t_flags *f)
 	}
 	else
 	{
-		f->i++;
 		f->width = va_arg(f->ap, int);
 		if (f->width < 0)
 		{
@@ -98,8 +109,11 @@ void		flag_sig(const char *format, t_flags *f)
 	}
 	if (format[f->i] == '*')
 	{
-		f->i--;
 		flag_conditions(format, f);
+		if (format[f->i] == '.')
+		{
+			precision(format, f);
+		}
 	}
 	not_show_sig(format, f);
 	not_show_num(format, f);
@@ -107,7 +121,6 @@ void		flag_sig(const char *format, t_flags *f)
 
 void		percent(const char *format, t_flags *f)
 {
-	write(1, &format, 0);
 	if (f->width > 0 || f->flag_precision > 0)
 	{
 		f->var_width = 1;

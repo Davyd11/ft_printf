@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:46:46 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/06 17:23:13 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 16:34:14 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	single_char(t_flags *f)
 {
 	char *t;
 
-	t = va_arg(f->ap, char *);
+	t = (char *)va_arg(f->ap, char *);
 	f->width--;
 	if (f->fast != 1)
 		spaces_char(f);
@@ -57,10 +57,13 @@ void	str_format(t_flags *f)
 	int		var_num;
 
 	sum = 0;
-	str = va_arg(f->ap, char *);
+	str = (char *)va_arg(f->ap, char *);
 	if (!str)
 		str = "(null)";
-	f->var_width = ft_strlen(str);
+	if (f->flag_precision == 0 && f->punto == 1)
+		str = "";
+	else
+		f->var_width = ft_strlen(str);
 	print_char(f);
 	pointer = f->flag_precision;
 	var_num = f->var_width;

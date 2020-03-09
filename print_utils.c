@@ -6,7 +6,7 @@
 /*   By: dpuente- <dpuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 17:36:05 by dpuente-          #+#    #+#             */
-/*   Updated: 2020/03/06 18:41:08 by dpuente-         ###   ########.fr       */
+/*   Updated: 2020/03/09 18:17:27 by dpuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	format_utils(t_flags *f, long int n, int yes)
 void	hex_pointer_utils(t_flags *f, char *letters,
 unsigned long int n, int yes)
 {
+	int done;
+	
+	done = 0;
 	if (f->fast != 1)
 	{
 		if (f->punto == 0)
@@ -58,11 +61,17 @@ unsigned long int n, int yes)
 		if (n < 0)
 			f->var_width--;
 		spaces(f, n);
+		write(1, "0x", 2);
+		f->len += 2;
+		done = 1;
 		if ((ceros(f, n) > 0))
 			n = n * (-1);
 	}
-	write(1, "0x", 2);
-	f->len += 2;
+	if (done == 0)
+	{
+		write(1, "0x", 2);
+		f->len += 2;		
+	}
 	if (yes == 1)
 		hex_putnbrbase(f, n, letters, ft_strlen(letters));
 	f->done = 1;
